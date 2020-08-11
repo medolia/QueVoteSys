@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vote Page</title>
+</head>
+<body>
+
+<h1>Demonstration How You Like the Game: <em>Sekiro</em></h1>
+<hr>
+
+<form th:action="@{/vote}" method="POST">
+
+    <div class="grid">
+        <div class="questionList">
+            <div th:each="optionsForAQ : ${optionsMap}">
+                <h3 th:text="${optionsForAQ.key.question_name}">QUESTION NAME HERE</h3>
+                <br>
+                <div class="optionList" th:each="option : ${optionsForAQ.value}">
+                    <input type="radio" class="option-radio" th:id="'question' + ${optionsForAQ.key.id} + 'option' + ${option.id}" th:name="${optionsForAQ.key.id}+ '#' +${optionsForAQ.key.question_name}" th:value="${option.id}+ '#' +${option.option_content}" >
+                    <label th:for="'question' + ${optionsForAQ.key.id} + 'option' + ${option.id}" th:text="${option.option_content}">OPTION HERE</label>
+                </div>
+                <hr>
+            </div>
+            <div class="cntBtn">
+                <input type="submit" value="提交">
+                <input type="reset" value="重置">
+            </div>
+        </div>
+    </div>
+
+</form>
+
+</body>
+
+</html>
