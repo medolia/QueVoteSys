@@ -34,6 +34,13 @@ public class MainController {
     }
 
     @GetMapping("/")
+    public String indexPage() {
+
+        return "index";
+    }
+
+    // 主页响应，返回一个答案-选项集的映射
+    @GetMapping("/vote")
     public String showVoteForm(Model model) {
         List<Question> questionList = new ArrayList<>();
         questionRepo.findAll().forEach(i -> questionList.add(i));
@@ -49,14 +56,8 @@ public class MainController {
         return "vote";
     }
 
-    @GetMapping("/result")
-    public String showVoteDiagram(@ModelAttribute("optionsMap") Map<Question, List<Option>> optionsMap) {
-
-        return "result";
-    }
-
-
-    @PostMapping("/vote")
+    // 投票判定响应
+    @PostMapping("/votepost")
     public String processVote(HttpServletRequest request) {
         List<Answer> answerList = new ArrayList<>();
         Enumeration<String> enu = request.getParameterNames();
@@ -72,9 +73,16 @@ public class MainController {
         return "votesuccess";
     }
 
-    @CrossOrigin
+    // 问卷结果页面
+    @GetMapping("/result")
+    public String showVoteDiagram(@ModelAttribute("optionsMap") Map<Question, List<Option>> optionsMap) {
+
+        return "result";
+    }
+
+    @CrossOrigin // 允许跨域请求(OCR)
     @GetMapping(path = "/results", produces = "application/json")
-    @ResponseBody
+    @ResponseBody // 请求结果查找得到 Json 文件
     public Iterable<Answer> getResJson() {
 
         return answerRepo.findAll();

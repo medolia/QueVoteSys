@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost:8889
--- 生成日期： 2020-08-11 09:13:33
+-- 生成日期： 2020-08-12 19:08:20
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.4.2
 
@@ -20,15 +20,153 @@ SET time_zone = "+00:00";
 -- 表的结构 `answer_info`
 --
 
-CREATE TABLE `answer_info` (
-                               `id` int(50) NOT NULL,
-                               `question_id` int(50) NOT NULL,
-                               `option_id` int(50) NOT NULL,
-                               `user_id` int(50) NOT NULL DEFAULT 0,
-                               `answer_content` varchar(255) NOT NULL,
-                               `create_ip` varchar(255) NOT NULL,
-                               `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `answer_info`
+(
+    `id`             int(50)      NOT NULL,
+    `question_id`    int(50)      NOT NULL,
+    `option_id`      int(50)      NOT NULL,
+    `user_id`        int(50)      NOT NULL DEFAULT '0',
+    `answer_content` varchar(255)          DEFAULT NULL,
+    `create_ip`      varchar(255) NOT NULL,
+    `create_date`    timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+--
+-- 转存表中的数据 `answer_info`
+--
+
+INSERT INTO `answer_info` (`id`, `question_id`, `option_id`, `user_id`, `answer_content`, `create_ip`, `create_date`)
+VALUES (24, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:19:10'),
+       (25, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:19:10'),
+       (26, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:19:10'),
+       (27, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:19:10'),
+       (28, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:20:47'),
+       (29, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:20:47'),
+       (30, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:20:47'),
+       (31, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:20:47'),
+       (32, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:13'),
+       (33, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:13'),
+       (34, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:13'),
+       (35, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:13'),
+       (36, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:54'),
+       (37, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:54'),
+       (38, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:54'),
+       (39, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:48:54'),
+       (40, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:49:02'),
+       (41, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:49:02'),
+       (42, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:49:02'),
+       (43, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 18:49:02'),
+       (44, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:07:11'),
+       (45, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:07:11'),
+       (46, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:07:11'),
+       (47, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:07:11'),
+       (48, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:12:15'),
+       (49, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:12:15'),
+       (50, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:12:15'),
+       (51, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:12:15'),
+       (52, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:15:53'),
+       (53, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:15:53'),
+       (54, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:15:53'),
+       (55, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:15:53'),
+       (56, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:19:23'),
+       (57, 3, 11, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:19:23'),
+       (58, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:19:23'),
+       (59, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:19:23'),
+       (60, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:26:27'),
+       (61, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:26:27'),
+       (62, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:26:27'),
+       (63, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 20:26:27'),
+       (64, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:37:13'),
+       (65, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:37:13'),
+       (66, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:37:13'),
+       (67, 2, 8, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:37:13'),
+       (68, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:55:24'),
+       (69, 3, 11, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:55:24'),
+       (70, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:55:24'),
+       (71, 2, 8, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-10 23:55:24'),
+       (72, 1, 3, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:12:45'),
+       (73, 3, 11, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:12:45'),
+       (74, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:12:45'),
+       (75, 2, 8, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:12:45'),
+       (76, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:15:29'),
+       (77, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:15:29'),
+       (78, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:15:29'),
+       (79, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:15:29'),
+       (80, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:39:26'),
+       (81, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:39:26'),
+       (82, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:39:26'),
+       (83, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 00:39:26'),
+       (84, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 02:23:40'),
+       (85, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 02:23:40'),
+       (86, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 02:23:40'),
+       (87, 2, 8, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 02:23:40'),
+       (88, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 03:42:53'),
+       (89, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 03:42:53'),
+       (90, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 03:42:53'),
+       (91, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 03:42:53'),
+       (92, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 07:58:49'),
+       (93, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 07:58:49'),
+       (94, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 07:58:49'),
+       (95, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 07:58:49'),
+       (96, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:01:03'),
+       (97, 3, 11, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:01:03'),
+       (98, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:01:03'),
+       (99, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:01:03'),
+       (100, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:02:21'),
+       (101, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:02:21'),
+       (102, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:02:21'),
+       (103, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:02:21'),
+       (104, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:04:35'),
+       (105, 3, 10, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:04:35'),
+       (106, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:04:35'),
+       (107, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:04:35'),
+       (108, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:07:39'),
+       (109, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:07:39'),
+       (110, 0, 0, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:07:39'),
+       (111, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:07:39'),
+       (112, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:08:50'),
+       (113, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:08:50'),
+       (114, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:08:50'),
+       (115, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:08:50'),
+       (116, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:12:16'),
+       (117, 3, 11, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:12:16'),
+       (118, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:12:16'),
+       (119, 2, 6, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:12:16'),
+       (120, 1, 4, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:15:55'),
+       (121, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:15:55'),
+       (122, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:15:55'),
+       (123, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:15:55'),
+       (124, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:24:55'),
+       (125, 3, 11, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:24:55'),
+       (126, 0, 2, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:24:55'),
+       (127, 2, 8, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:24:55'),
+       (128, 1, 5, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:40:45'),
+       (129, 3, 9, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:40:45'),
+       (130, 0, 1, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:40:45'),
+       (131, 2, 7, 0, NULL, '0:0:0:0:0:0:0:1', '2020-08-11 08:40:45');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `hibernate_sequence`
+--
+
+CREATE TABLE `hibernate_sequence`
+(
+    `next_val` bigint(20) DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+--
+-- 转存表中的数据 `hibernate_sequence`
+--
+
+INSERT INTO `hibernate_sequence` (`next_val`)
+VALUES (132),
+       (132),
+       (132),
+       (132);
 
 -- --------------------------------------------------------
 
@@ -36,29 +174,31 @@ CREATE TABLE `answer_info` (
 -- 表的结构 `option_info`
 --
 
-CREATE TABLE `option_info` (
-                               `id` int(50) NOT NULL,
-                               `question_id` int(50) NOT NULL,
-                               `option_content` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `option_info`
+(
+    `id`             int(50)      NOT NULL,
+    `question_id`    int(50)      NOT NULL,
+    `option_content` varchar(255) NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 --
 -- 转存表中的数据 `option_info`
 --
 
-INSERT INTO `option_info` (`id`, `question_id`, `option_content`) VALUES
-(0, 0, 'Touching'),
-(1, 0, 'Ordinary'),
-(2, 0, 'Just so so'),
-(3, 1, 'High'),
-(4, 1, 'Medium'),
-(5, 1, 'Low'),
-(6, 2, 'Unique'),
-(7, 2, 'Common'),
-(8, 2, 'Low level'),
-(9, 3, 'Close to Reality'),
-(10, 3, 'Enough for a Game'),
-(11, 3, 'Disappointing');
+INSERT INTO `option_info` (`id`, `question_id`, `option_content`)
+VALUES (0, 0, 'Touching'),
+       (1, 0, 'Ordinary'),
+       (2, 0, 'Just so so'),
+       (3, 1, 'High'),
+       (4, 1, 'Medium'),
+       (5, 1, 'Low'),
+       (6, 2, 'Unique'),
+       (7, 2, 'Common'),
+       (8, 2, 'Low level'),
+       (9, 3, 'Close to Reality'),
+       (10, 3, 'Enough for a Game'),
+       (11, 3, 'Disappointing');
 
 -- --------------------------------------------------------
 
@@ -66,21 +206,23 @@ INSERT INTO `option_info` (`id`, `question_id`, `option_content`) VALUES
 -- 表的结构 `question_info`
 --
 
-CREATE TABLE `question_info` (
-                                 `id` int(50) NOT NULL,
-                                 `question_name` varchar(255) NOT NULL,
-                                 `question_description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `question_info`
+(
+    `id`                   int(50)      NOT NULL,
+    `question_name`        varchar(255) NOT NULL,
+    `question_description` varchar(255) DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 --
 -- 转存表中的数据 `question_info`
 --
 
-INSERT INTO `question_info` (`id`, `question_name`, `question_description`) VALUES
-(0, 'Story Narrative', '叙事手法'),
-(1, 'Freedom of Game', '自由度'),
-(2, 'Philosophy of Art', '艺术哲学深度'),
-(3, 'Picture Quality', '画质');
+INSERT INTO `question_info` (`id`, `question_name`, `question_description`)
+VALUES (0, 'Story Narrative', '叙事手法'),
+       (1, 'Freedom of Game', '自由度'),
+       (2, 'Philosophy of Art', '艺术哲学深度'),
+       (3, 'Picture Quality', '画质');
 
 -- --------------------------------------------------------
 
@@ -88,19 +230,21 @@ INSERT INTO `question_info` (`id`, `question_name`, `question_description`) VALU
 -- 表的结构 `user_info`
 --
 
-CREATE TABLE `user_info` (
-                             `id` int(50) NOT NULL,
-                             `username` varchar(255) NOT NULL,
-                             `password` varchar(255) NOT NULL,
-                             `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `user_info`
+(
+    `id`          int(50)      NOT NULL,
+    `username`    varchar(255) NOT NULL,
+    `password`    varchar(255) NOT NULL,
+    `create_date` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 --
 -- 转存表中的数据 `user_info`
 --
 
-INSERT INTO `user_info` (`id`, `username`, `password`, `create_date`) VALUES
-(0, 'QueRoot', 'intel123', '2020-08-11 01:12:04');
+INSERT INTO `user_info` (`id`, `username`, `password`, `create_date`)
+VALUES (0, 'QueRoot', 'intel123', '2020-08-11 01:12:04');
 
 --
 -- 转储表的索引
@@ -142,25 +286,28 @@ ALTER TABLE `user_info`
 -- 使用表AUTO_INCREMENT `answer_info`
 --
 ALTER TABLE `answer_info`
-    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 132;
 
 --
 -- 使用表AUTO_INCREMENT `option_info`
 --
 ALTER TABLE `option_info`
-    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 12;
 
 --
 -- 使用表AUTO_INCREMENT `question_info`
 --
 ALTER TABLE `question_info`
-    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 4;
 
 --
 -- 使用表AUTO_INCREMENT `user_info`
 --
 ALTER TABLE `user_info`
-    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+    MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- 限制导出的表
