@@ -1,8 +1,8 @@
-package com.que.votesys.controller;
+package com.que.votesys.web;
 
-import com.que.votesys.DAO.OptionRepo;
-import com.que.votesys.DAO.QuestionRepo;
-import com.que.votesys.DAO.AnswerRepo;
+import com.que.votesys.data.OptionRepo;
+import com.que.votesys.data.QuestionRepo;
+import com.que.votesys.data.AnswerRepo;
 import com.que.votesys.model.Answer;
 import com.que.votesys.model.Option;
 import com.que.votesys.model.Question;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -34,12 +35,11 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String indexPage() {
-
+    public String showIndex() {
         return "index";
     }
 
-    // 主页响应，返回一个答案-选项集的映射
+    // 投票主页响应，返回一个答案-选项集的映射
     @GetMapping("/vote")
     public String showVoteForm(Model model) {
         List<Question> questionList = new ArrayList<>();
@@ -64,9 +64,14 @@ public class MainController {
 
         while (enu.hasMoreElements()) {
             String QAStr = enu.nextElement();
-            int Qid = Integer.parseInt(QAStr.split("#")[0]);
-            int OptId = Integer.parseInt(request.getParameter(QAStr).split("#")[0]);
-            answerList.add(new Answer(Qid, OptId, request.getLocalAddr()));
+            String pattern = "\\d#\\w*";
+            boolean isValidQAStr = Pattern.matches(pattern, QAStr);
+            if (isValidQAStr) {
+                int Qid = Integer.parseInt(QAStr.split("#")[0]);
+                int OptId = Integer.parseInt(request.getParameter(QAStr).split("#")[0]);
+                answerList.add(new Answer(Qid, OptId, request.getLocalAddr()));
+            }
+
         }
         answerRepo.saveAll(answerList);
 

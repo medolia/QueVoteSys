@@ -1,4 +1,4 @@
-package com.que.votesys.DAO;
+package com.que.votesys.data;
 
 import com.que.votesys.model.Question;
 import org.springframework.data.repository.CrudRepository;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="my-5 jumbotron border border-info">
+        <h1>Create New Account</h1>
+        <p>Quick and Simple</p>
+
+        <form METHOD="POST" th:action="@{/register}">
+
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+
+            <label for="password">Username:</label>
+            <input type="text" name="password" id="password">
+
+            <input class="btn btn-primary" type="submit" value="注册">
+
+        </form>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

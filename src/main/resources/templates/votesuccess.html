@@ -9,16 +9,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/1fb43bd722.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="container my-5 text-center">
+<div class="container my-5">
     <div class="jumbotron border border-success">
-        <h1>Vote Success! 0.0</h1>
-        <a th:href="@{/result}">Current Voting Result</a>
-        <a th:href="@{/vote}">Repeated Vote Test</a>
+        <div class="row">
+            <div class="col-4 d-flex justify-content-end">
+                <span style="color: #249D3C">
+                    <i class="far fa-check-square fa-7x"></i>
+                </span>
+            </div>
+            <div class="col-8">
+                <h1 class="text-success">Vote Success!</h1>
+                <p class="mb-3 text-secondary">your vote is valid and has been recorded</p>
+                <a class="btn btn-primary mr-3" th:href="@{/result}">Current Voting Result</a>
+                <a class="btn btn-secondary" th:href="@{/vote}">Repeated Vote Test</a>
+            </div>
+        </div>
+
     </div>
 </div>
 
 </body>
+<script>
+
+    $(function () {
+        localStorage.removeItem("startTime");
+    })
+
+</script>
 </html>

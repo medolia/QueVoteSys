@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Vote Page</title>
     <meta charset="utf-8">
@@ -13,10 +13,12 @@
 <body>
 
 <div class="container my-5">
-    <div class="jumbotron border border-primary">
+    <div class="jumbotron bg-light border border-primary">
 
         <h1>Demonstration How You Like the Game: <strong>Sekiro</strong></h1>
-        <p class="vote-timer-container text-secondary">Remaining time: <span class="vote-timer">20</span> second</p>
+        <div class="progress">
+            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" id="vote-timer" style="width: 100%;"></div>
+        </div>
 
         <form th:action="@{/votepost}" method="POST">
 
@@ -28,8 +30,8 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">提交</button>
-            <button type="reset" class="btn btn-secondary">重置</button>
+            <button class="btn btn-primary" id="submit-btn" type="submit">提交</button>
+            <button class="btn btn-secondary" type="reset" >重置</button>
 
         </form>
 
@@ -46,9 +48,10 @@
 
     $(function() {
 
+        let remainingTime = 100
         const voteTimer = setInterval(function () {
-            let currentTime = $(".vote-timer").text();
-            $(".vote-timer").text(parseInt(currentTime) - 1);
+            remainingTime -= 5;
+            $("#vote-timer").attr("style", "width:" + remainingTime.toString() +"%;");
         }, 1000);
 
         const voteTimeout = setTimeout(cancelVoteAccess, 20000);
@@ -60,7 +63,7 @@
             localStorage.setItem("startTime", now);
         } else {
             if ((now - startTime) >= 20000) {
-                $(".vote-timer").text(0);
+                $("#vote-timer").attr("style", "width: 0%;");
                 cancelVoteAccess();
                 localStorage.removeItem("startTime");
             }
@@ -68,8 +71,8 @@
 
         function cancelVoteAccess() {
             clearInterval(voteTimer);
-            $(".form-submit-btn").attr("disabled", "disabled");
-        };
+            $("#submit-btn").attr("disabled", "disabled");
+        }
 
 
 
