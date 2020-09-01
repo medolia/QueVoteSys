@@ -1,6 +1,5 @@
 package com.que.votesys.model;
 
-import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
